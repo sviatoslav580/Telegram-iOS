@@ -488,7 +488,7 @@ final class MessageHistoryTable: Table {
             var operations: [MessageHistoryIndexOperation] = []
             
             for id in messageIds {
-                self.messageHistoryIndexTable.removeMessage(id, operations: &operations)
+                //self.messageHistoryIndexTable.removeMessage(id, operations: &operations)
             }
             
             if let forEachMedia = forEachMedia {
@@ -516,13 +516,13 @@ final class MessageHistoryTable: Table {
         self.messageHistoryIndexTable.removeMessagesInRange(peerId: peerId, namespace: namespace, minId: minId, maxId: maxId, operations: &operations)
         if let forEachMedia = forEachMedia {
             for operation in operations {
-                if case let .Remove(index) = operation {
-                    if let message = self.getMessage(index) {
-                        for media in self.renderMessageMedia(referencedMedia: message.referencedMedia, embeddedMediaData: message.embeddedMediaData) {
-                            forEachMedia(media)
-                        }
-                    }
-                }
+                // if case let .Remove(index) = operation {
+//     if let message = self.getMessage(index) {
+//         for media in self.renderMessageMedia(referencedMedia: message.referencedMedia, embeddedMediaData: message.embeddedMediaData) {
+//             forEachMedia(media)
+//         }
+//     }
+// }
             }
         }
         
